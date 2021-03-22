@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>PrimeFaces</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:tabView>
+                <p:tab title="Form">
+                    <p:growl id="growl" showDetail="true"></p:growl>
+                    <p:spinner id="firstNumber" min="0" max="42" value="#{calculationBean.firstNumber}" />
+                    +
+                    <p:spinner id="secondNumber" min="0" max="42" value="#{calculationBean.secondNumber}" />
+                    <p:commandButton value="Calculate" 
+                                     update="result date growl" 
+                                     action="#{calculationBean.calculate()}" 
+                                     ajax="true"/>
+                    =
+                    <h:outputText id="result" value="#{calculationBean.result}"></h:outputText>
+                    <p>
+                        <h:outputText id="date" value="#{calculationBean.now}"></h:outputText>
+                    </p>
+                </p:tab>
+                <p:tab title="Table">
+                    <p:dataTable var="student" value="#{tableBean.students}" 
+                                 paginator="true"
+                                 rows="3">
+                        <p:column headerText="Name">
+                            <h:outputText value="#{student.name}"/>
+                        </p:column>
+                        <p:column headerText="Surname" sortBy="#{student.surname}">
+                            <h:outputText value="#{student.surname}"/>
+                        </p:column>
+                        <p:column headerText="Average Grade" sortBy="#{student.avgGrade}">
+                            <h:outputText value="#{student.avgGrade}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                <p:tab title="Chart">
+                    <p:chart type="line" model="#{lineChartBean.lineModel}"/>
+                    <p:commandButton value="Reset" onclick="PF('chart').resetZoom()"></p:commandButton>
+                </p:tab>
+            </p:tabView>
+        </h:form>
+    </h:body>
+</html>
+
