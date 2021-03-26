@@ -40,7 +40,7 @@
                     </p:dataTable>
                 </p:tab>
                 <p:tab title="Chart">
-                    <p:chart type="line" model="#{lineChartBean.lineModel}"/>
+                    <p:chart type="line" model="#{lineChartBean.lineModel}" widgetVar="chart"/>
                     <p:commandButton value="Reset" onclick="PF('chart').resetZoom()"></p:commandButton>
                 </p:tab>
             </p:tabView>
