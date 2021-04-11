@@ -24,3 +24,12 @@ hs_err_pid*
 
 target/
 .idea/
+/Lab5/MDBLab/nbproject/private/
+/Lab5/MDBLab/MDBLab-war/nbproject/private/
+/Lab5/MDBLab/MDBLab-ejb/nbproject/private/
+/Lab5/MDBLab/MDBLab-ejb/build/
+/Lab5/MDBLab/MDBLab-ejb/dist/
+/Lab5/MDBLab/MDBLab-war/build/
+/Lab5/MDBLab/build/
+/Lab5/MDBLab/MDBLab-war/dist/
+/Lab5/MDBLab/dist/
