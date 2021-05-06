@@ -67,3 +67,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### VS ###
+.vs/
+obj/
+bin/
