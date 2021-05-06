@@ -102,7 +102,7 @@ namespace MvcNews.Controllers
                     _context.Update(newsItem);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException e)
                 {
                     if (!NewsItemExists(newsItem.Id))
                     {
@@ -111,6 +111,11 @@ namespace MvcNews.Controllers
                     else
                     {
                         ModelState.AddModelError(String.Empty, "The news you attempted to edit was modified by another user");
+
+                        NewsItem newsItemFromDb = (NewsItem) e.Entries.Single().GetDatabaseValues().ToObject();
+                        newsItem.RowVersion = newsItemFromDb.RowVersion;
+                        ModelState.Remove("RowVersion");
+
                         return View(newsItem);
                     }
                 }
