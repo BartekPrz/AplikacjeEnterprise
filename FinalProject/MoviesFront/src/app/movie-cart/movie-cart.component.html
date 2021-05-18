@@ -1,0 +1,42 @@
+<h2>Your current cart</h2>
+
+<h2>List of movies</h2>
+
+<div class="movieCategory">
+    <label for="movieCategory">Movie category: </label>
+    <select id="movieCategory" [(ngModel)]="selectedCategory" (ngModelChange)="changeCategory()">
+        <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+    </select>
+</div>
+
+<table class="minimalistBlack">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>Cast</th>
+            <th>Director</th>
+            <th>Price</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of fetchedMovies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.category}}</td>
+            <td>{{movie.year}}</td>
+            <td>{{movie.cast}}</td>
+            <td>{{movie.director}}</td>
+            <td class="price">{{movie.price}} PLN</td>
+            <td>
+                <a routerLink="/movies/details/{{movie.id}}">
+                    Details
+                </a>
+            </td>
+            <td>
+                <button (click)="addMovieToCart(movie.id)">Buy</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
