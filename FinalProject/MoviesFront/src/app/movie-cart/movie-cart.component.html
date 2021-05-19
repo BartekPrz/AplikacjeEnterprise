@@ -1,5 +1,32 @@
 <h2>Your current cart</h2>
 
+<table *ngIf="cart.movies.length > 0" class="paleBlueRows">
+    <thead>
+        <tr>
+            <th colspan="3">Your current cart</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of cart.movies">
+            <td>{{movie.title}}</td>
+            <td class="price">{{movie.price}} PLN</td>
+            <td>
+                <button (click)="removeMovieFromCart(movie.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Total: {{cart.price}} PLN</td>
+            <td><a routerLink="" (click)="clearCart()">Clear</a></td>
+        </tr>
+    </tfoot>
+</table>
+
+<div *ngIf="cart.movies.length === 0">
+    No movies in cart
+</div>
+
 <h2>List of movies</h2>
 
 <div class="movieCategory">

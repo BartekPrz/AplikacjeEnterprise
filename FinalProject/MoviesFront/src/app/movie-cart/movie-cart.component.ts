@@ -34,11 +34,7 @@ export class MovieCartComponent implements OnInit {
   }
 
   getCart(): void {
-    this.cartService.getCart().subscribe(cart => {
-      this.cart = cart
-      console.log("Cart from get: ");
-      console.log(this.cart);
-    });
+    this.cartService.getCart().subscribe(cart => this.cart = cart);
   }
 
   createMoviesCategories(): void {
@@ -59,11 +55,14 @@ export class MovieCartComponent implements OnInit {
   }
 
   addMovieToCart(id: number): void {
-    this.cartService.addMovieToCart(id).subscribe(cart => {
-      this.cart = cart
-      console.log("Cart from add: ");
-      console.log(this.cart);
-      this.getCart();
-    });
+    this.cartService.addMovieToCart(id).subscribe(cart => this.cart = cart);
+  }
+
+  removeMovieFromCart(id: number): void {
+    this.cartService.removeMovieFromCart(id).subscribe(cart => this.cart = cart);
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart().subscribe(cart => this.cart = cart);
   }
 }

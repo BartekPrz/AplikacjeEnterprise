@@ -8,7 +8,7 @@ import { Cart } from './Cart';
 })
 export class CartService {
 
-  private cartApiUrl = "http://localhost:8080/cart";
+  private cartApiUrl = "/cart";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class CartService {
 
   addMovieToCart(id: number): Observable<Cart> {
     const url = `${this.cartApiUrl}/add/${id}`;
-    return this.http.post<Cart>(url, {}, {withCredentials: true});
+    return this.http.post<Cart>(url, {});
   }
 
   removeMovieFromCart(id: number): Observable<Cart> {
